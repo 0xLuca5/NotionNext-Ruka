@@ -64,7 +64,7 @@ export const SideBar = props => {
   const activePath = router?.asPath?.split?.('?')?.[0]
   const avatar = siteConfig('AVATAR') || siteInfo?.icon || '/avatar.svg'
   const authorName = siteConfig('AUTHOR') || siteConfig('TITLE') || siteInfo?.title
-  const description = (CONFIG?.AUTHOR_DESCRIPTION && CONFIG.AUTHOR_DESCRIPTION.trim()) || siteInfo?.description || siteConfig('DESCRIPTION')
+  const description = (siteConfig('RUKA_AUTHOR_DESCRIPTION', null, CONFIG) || '').trim()
   const categoryCount = Array.isArray(categoryOptions) ? categoryOptions.length : 0
   const tagCount = Array.isArray(tagOptions) ? tagOptions.length : 0
 

@@ -275,7 +275,7 @@ export const Header = props => {
     router?.asPath === '/' ||
     (router?.asPath && router.asPath.startsWith('/page/'))
 
-  const brandLogo = '/luca5_logo.svg'
+  const brandLogo = (siteConfig('RUKA_LOGO_URI', null, CONFIG) || '').trim()
 
   const headerRef = useRef(null)
   const lastScrollYRef = useRef(0)
@@ -484,7 +484,7 @@ export const Header = props => {
   const avatar = siteConfig('AVATAR') || props?.siteInfo?.icon || '/avatar.svg'
   const authorName =
     siteConfig('AUTHOR') || siteConfig('TITLE') || props?.siteInfo?.title
-  const description = (CONFIG?.AUTHOR_DESCRIPTION && CONFIG.AUTHOR_DESCRIPTION.trim()) || props?.siteInfo?.description || siteConfig('DESCRIPTION')
+  const description = (siteConfig('RUKA_AUTHOR_DESCRIPTION', null, CONFIG) || '').trim()
   const categoryCount = Array.isArray(props?.categoryOptions)
     ? props.categoryOptions.length
     : 0
@@ -637,11 +637,13 @@ export const Header = props => {
           </button>
           <SmartLink href='/' passHref legacyBehavior>
             <a className='logo -my-1 flex cursor-pointer items-center justify-center whitespace-nowrap no-underline md:mr-2 absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0'>
-              <LazyImage
-                src={brandLogo}
-                alt='LUCAS'
-                className='h-10 md:h-12 w-auto object-contain'
-              />
+              {brandLogo ? (
+                <LazyImage
+                  src={brandLogo}
+                  alt='LUCAS'
+                  className='h-10 md:h-12 w-auto object-contain'
+                />
+              ) : null}
             </a>
           </SmartLink>
           <div className='hidden md:block'>

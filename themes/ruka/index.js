@@ -188,6 +188,8 @@ const HomeCover = props => {
 
   const bannerImage = props?.siteInfo?.pageCover || siteConfig('HOME_BANNER_IMAGE')
 
+  const greetingWordsValue = siteConfig('GREETING_WORDS', '', CONFIG)
+
    const bannerImagePosition =
     typeof props?.siteInfo?.pageCoverPosition === 'number'
       ? props.siteInfo.pageCoverPosition
@@ -200,12 +202,9 @@ const HomeCover = props => {
 
 
 
-    const GREETING_WORDS = (siteConfig('GREETING_WORDS') || '')
-
-      .split(',')
-
+    const GREETING_WORDS = String(greetingWordsValue || '')
+      .split(/,|，|\n/)
       .map(s => s.trim())
-
       .filter(Boolean)
 
 
@@ -260,7 +259,7 @@ const HomeCover = props => {
 
     }
 
-  }, [])
+  }, [greetingWordsValue])
 
 
 
