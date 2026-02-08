@@ -291,7 +291,7 @@ export const Header = props => {
 
   useEffect(() => {
     if (typeof window === 'undefined') return
-    const saved = window.localStorage?.getItem('mythemes_theme_color')
+    const saved = window.localStorage?.getItem('ruka_theme_color')
     if (saved) {
       setThemeColor(saved)
       applyThemeColor(saved)
@@ -356,7 +356,7 @@ export const Header = props => {
       return
     }
     const offset = isHidden ? 0 : headerHeight
-    document.documentElement.style.setProperty('--mythemes-header-offset', `${offset}px`)
+    document.documentElement.style.setProperty('--ruka-header-offset', `${offset}px`)
   }, [isHidden, headerHeight])
 
   useEffect(() => {
@@ -677,7 +677,7 @@ export const Header = props => {
                 setThemeColor(val)
                 applyThemeColor(val)
                 if (typeof window !== 'undefined') {
-                  window.localStorage?.setItem('mythemes_theme_color', val)
+                  window.localStorage?.setItem('ruka_theme_color', val)
                 }
               }}
               className='absolute inset-0 h-full w-full cursor-pointer opacity-0'

@@ -28,7 +28,7 @@ const Style = () => {
       );
       --box-bg-shadow: rgba(0, 0, 0, 0.1);
       --grey-1-a5: rgba(253, 253, 253, 0.5);
-      --mythemes-header-offset: 0px;
+      --ruka-header-offset: 0px;
 
       /* Semantic colors from astro-koharu */
       --primary: 351 77% 62%;
@@ -72,18 +72,18 @@ const Style = () => {
       font-weight: 400;
     }
 
-    #theme-mythemes {
+    #theme-ruka {
       font-family: "寒蝉全圆体", "Noto Sans SC", "PingFang SC", -apple-system, BlinkMacSystemFont,
         "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", Helvetica, Arial, sans-serif;
       font-weight: 400;
     }
 
-    #theme-mythemes h1,
-    #theme-mythemes h2,
-    #theme-mythemes h3,
-    #theme-mythemes h4,
-    #theme-mythemes h5,
-    #theme-mythemes h6 {
+    #theme-ruka h1,
+    #theme-ruka h2,
+    #theme-ruka h3,
+    #theme-ruka h4,
+    #theme-ruka h5,
+    #theme-ruka h6 {
       font-family: "寒蝉全圆体", Bitter, "Noto Serif SC", SimSun, "Times New Roman", Times, serif;
     }
 

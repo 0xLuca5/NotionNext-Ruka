@@ -214,7 +214,7 @@ const HomeCover = props => {
 
 
 
-    if (GREETING_WORDS.length > 0 && document.getElementById('typed-mythemes')) {
+    if (GREETING_WORDS.length > 0 && document.getElementById('typed-ruka')) {
 
       loadExternalResource('/js/typed.min.js', 'js').then(() => {
 
@@ -222,7 +222,7 @@ const HomeCover = props => {
 
         if (window.Typed && !typedRef.current) {
 
-          typedRef.current = new window.Typed('#typed-mythemes', {
+          typedRef.current = new window.Typed('#typed-ruka', {
 
             strings: GREETING_WORDS,
 
@@ -282,7 +282,7 @@ const HomeCover = props => {
 
         <div className='shadow-text mt-5 text-sm h-6 flex items-center justify-center'>
 
-          <span id='typed-mythemes' />
+          <span id='typed-ruka' />
 
         </div>
 
@@ -410,7 +410,7 @@ const LayoutBase = props => {
 
   return (
     <div
-      id='theme-mythemes'
+      id='theme-ruka'
       className={`${siteConfig('FONT_STYLE')} dark:text-gray-300 scroll-smooth`}
     >
       <Style />
@@ -432,7 +432,7 @@ const LayoutBase = props => {
           `}
         >
           {hasSider && (
-            <aside className='hidden md:block w-64 min-w-64 max-w-64 px-2 sticky top-[calc(var(--mythemes-header-offset)+2rem)] self-start '>
+            <aside className='hidden md:block w-64 min-w-64 max-w-64 px-2 sticky top-[calc(var(--ruka-header-offset)+2rem)] self-start '>
               {effectiveSider}
             </aside>
           )}
@@ -487,7 +487,7 @@ const LayoutBase = props => {
 
             <aside
               id='sidebar-drawer'
-              className={`absolute left-0 top-[var(--mythemes-header-offset)] h-[calc(100dvh-var(--mythemes-header-offset))] w-[82vw] max-w-[360px] overflow-y-auto px-3 py-4 transition-transform duration-300 ${
+              className={`absolute left-0 top-[var(--ruka-header-offset)] h-[calc(100dvh-var(--ruka-header-offset))] w-[82vw] max-w-[360px] overflow-y-auto px-3 py-4 transition-transform duration-300 ${
                 sidebarDrawerOpen ? 'translate-x-0' : '-translate-x-full'
               }`}
             >
