@@ -13,7 +13,7 @@
 - [ ] **Post word count**
 
 ## Preview
-![preview](/blob/main/public/images/preview.png)
+![preview](/public/images/preview.png)
 
 ## Usage
 

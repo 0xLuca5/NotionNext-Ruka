@@ -13,7 +13,7 @@
 - [ ] **文章字数计算**
 
 ## Preview
-![preview](/blob/main/public/images/preview.png)
+![preview](/public/images/preview.png)
 
 ## 使用方式
 
