@@ -84,11 +84,11 @@ export const Footer = props => {
         <div className='text-muted-foreground/80 flex items-center gap-2 text-xs'>
           <span className='opacity-75'>Powered by theme</span>
           <a
-            href='https://github.com/tangly1024/NotionNext'
+            href='https://github.com/0xLuca5/NotionNext-Ruka'
             target='_blank'
             rel='noreferrer'
             className='footer-link font-medium transition-all duration-300'>
-            NotionNext
+            NotionNext-Ruka
           </a>
           <span className='opacity-50'>·</span>
           <span className='opacity-75'>Inspired by</span>

@@ -11,6 +11,9 @@
 - [ ] **Categories**
 - [ ] **Tags page**
 - [ ] **Post word count**
+- [x] **Theme color palette**
+- [x] **Random posts**
+- [ ] **Archive page**
 
 ## Preview
 ![preview](/public/images/preview.png)
