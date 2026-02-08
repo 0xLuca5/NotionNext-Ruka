@@ -1,5 +1,5 @@
 import { useGlobal } from '@/lib/global'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import SmartLink from '@/components/SmartLink'
 /**
  * 文章详情的元信息
@@ -9,12 +9,60 @@ export const PostMeta = props => {
   const { post } = props
   const { locale } = useGlobal()
   const [summaryOpen, setSummaryOpen] = useState(false)
+  const [animatedSummary, setAnimatedSummary] = useState('')
+  const [typing, setTyping] = useState(false)
+  const typingTimerRef = useRef(null)
   const aiSummary = post?.aiSummary || post?.summary
 
+  useEffect(() => {
+    if (typingTimerRef.current) {
+      clearTimeout(typingTimerRef.current)
+      typingTimerRef.current = null
+    }
+
+    if (!summaryOpen || !aiSummary) {
+      setTyping(false)
+      setAnimatedSummary('')
+      return
+    }
+
+    const raw = String(aiSummary)
+    let i = 0
+    let canceled = false
+    const baseDelay = 30
+    const punctuationDelayMultiplier = 6
+
+    setTyping(true)
+    setAnimatedSummary('')
+
+    const tick = () => {
+      if (canceled) return
+      const letter = raw.slice(i, i + 1)
+      const isPunctuation = /[，。！、？,.!?]/.test(letter)
+      const delay = isPunctuation ? baseDelay * punctuationDelayMultiplier : baseDelay
+      setAnimatedSummary(raw.slice(0, i + 1))
+      i++
+      if (i >= raw.length) {
+        setTyping(false)
+        return
+      }
+      typingTimerRef.current = setTimeout(tick, delay)
+    }
+
+    typingTimerRef.current = setTimeout(tick, 120)
+    return () => {
+      canceled = true
+      if (typingTimerRef.current) {
+        clearTimeout(typingTimerRef.current)
+        typingTimerRef.current = null
+      }
+    }
+  }, [summaryOpen, aiSummary])
+
   return (
-    <section className='mt-3 pb-2 mb-2 dark:border-white/10'>
+    <section className='mt-0 pb-0 mb-2 dark:border-white/10'>
       <div className='text-muted-foreground'>
-        <nav className='flex flex-wrap items-center gap-1.5 text-base font-medium leading-none tracking-tight'>
+        <nav className='flex flex-wrap items-center gap-1.5 text-sm font-medium leading-none tracking-tight'>
           <SmartLink href='/' passHref className='flex items-center gap-1.5 hover:underline'>
             <i className='fas fa-home text-xs' />
             <span>{locale?.NAV?.INDEX || '首页'}</span>
@@ -25,7 +73,7 @@ export const PostMeta = props => {
               <SmartLink
                 href={`/category/${post?.category}`}
                 passHref
-                className='inline-flex items-center gap-1.5 rounded-full bg-primary/15 px-2 py-0.5 text-base font-semibold text-primary hover:bg-primary/20'>
+                className='inline-flex items-center gap-1.5 rounded-full bg-primary/15 px-2 py-0.5 text-sm font-semibold text-primary hover:bg-primary/20'>
                 <i className='fas fa-folder-open text-[10px]' />
                 <span className='leading-none'>{post?.category}</span>
               </SmartLink>
@@ -67,7 +115,10 @@ export const PostMeta = props => {
             </button>
             {summaryOpen && (
               <div className='px-4 pb-4 text-sm leading-relaxed text-foreground/70 dark:text-white/70 whitespace-pre-line'>
-                {aiSummary}
+                {animatedSummary}
+                {typing && (
+                  <span className='ml-1 inline-block h-4 w-0.5 align-middle bg-current animate-pulse' />
+                )}
               </div>
             )}
           </section>
