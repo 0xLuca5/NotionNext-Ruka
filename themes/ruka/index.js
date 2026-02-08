@@ -501,6 +501,11 @@ const LayoutBase = props => {
 
       <Footer {...props} />
 
+      {/* Live2D */}
+      <div className='fixed left-2 bottom-2 z-20 select-none'>
+        <Live2D />
+      </div>
+
 
 
       {/* 回顶按钮 */}

@@ -1,79 +1,95 @@
-# 帮助教程
+# NotionNext-Ruka
 
-访问帮助：[NotionNext帮助手册](https://docs.tangly1024.com/)
+`NotionNext-Ruka` 是一个基于 [NotionNext](https://github.com/tangly1024/NotionNext) 的主题仓库。
 
-> 本项目教程为免费、公开资源，仅限个人学习使用，禁止利用本教程建立的博客发布非法内容、进行违法犯罪活动。严禁任何个人或组织将本教程用于商业用途，包括但不限于直接售卖、间接收费、或其他变相盈利行为。转载、复制或介绍本教程内容时，须保留作者信息并明确注明来源。 
-> 本项目仅提供由作者团队授权的付费咨询服务，请注意辨别，谨防诈骗行为。任何未经授权的收费服务均可能存在法律风险。
+[中文](./README.md) | [English](./README_EN.md)
 
-Notion是一个能让效率暴涨的生产力引擎，可以帮你书写文档、管理笔记，搭建知识库，甚至可以为你规划项目、时间管理、组织团队、提高生产力、还有当前最强大的AI技术加持。
+## 功能进度
 
-> 若希望进一步探索Notion的功能，欢迎购买《[Notion笔记从入门到精通进阶课程](https://docs.tangly1024.com/article/notion-tutorial)》
+- [x] **主页**
+- [x] **文章页面**
+- [ ] **分类**
+- [ ] **标签页面**
+- [ ] **文章字数计算**
 
-> 若希望获得稳定、高速、不限设备数量的VPN科学上网服务，欢迎使用[飞鸟VPN](https://fbinv02.fbaff.cc/auth/register?code=kaA7t4kh)，这是我目前在用的VPN，仅作友情推广
+## Preview
+![preview](images/preview.png)
 
-# NotionNext
+## 使用方式
 
-<p>
-  <a aria-label="GitHub commit activity" href="https://github.com/tangly1024/NotionNext/commits/main" title="GitHub commit activity">
-    <img src="https://img.shields.io/github/commit-activity/m/tangly1024/NotionNext?style=for-the-badge"/>
-  </a>
-  <a aria-label="GitHub contributors" href="https://github.com/tangly1024/NotionNext/graphs/contributors" title="GitHub contributors">
-    <img src="https://img.shields.io/github/contributors/tangly1024/NotionNext?color=orange&style=for-the-badge"/>
-  </a>
-  <a aria-label="Build status" href="#" title="Build status">
-    <img src="https://img.shields.io/github/deployments/tangly1024/NotionNext/Production?logo=Vercel&style=for-the-badge"/>
-  </a>
-  <a aria-label="Powered by Vercel" href="https://vercel.com?utm_source=Craigary&utm_campaign=oss" title="Powered by Vercel">
-    <img src="https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg" height="28"/>
-  </a>
-</p>
+### 方式一：作为 NotionNext 的主题目录使用
 
-中文文档 | [README in English](./README_EN.md)
+- **[步骤 1]** 将本仓库的 `themes/ruka` 目录复制到你的 NotionNext 项目下的 `themes/ruka`
+- **[步骤 2]** 在 NotionNext 的 `blog.config.js` 中启用该主题：
+  - `THEME: 'ruka'`
+- **[步骤 3]** 启动 / 构建项目
 
-<hr/>
+### 方式二：直接基于本仓库二次开发
 
-一个使用 NextJS + Notion API 实现的，部署在 Vercel 上的静态博客系统。为Notion和所有创作者设计。
+你可以把本仓库当作你的 NotionNext 主题开发工作区，按需修改：
 
-支持多种部署方案
+- `themes/ruka/components/*`
+- `themes/ruka/style.js`
+- `themes/ruka/config.js`
 
-## 预览效果
+## 配置
 
-在线演示：[https://preview.tangly1024.com/](https://preview.tangly1024.com/) ，点击左下角挂件可以切换主题，没找到喜欢的主题？[贡献](/CONTRIBUTING.md)一个吧~
+本主题的配置优先从 Notion 配置表读取，其次可从 `themes/ruka/config.js` 读取（部分配置项会显式传入 `CONFIG` 作为兜底）。
 
-| Next                                                                                                  | Medium                                                                                                      | Hexo                                                                                                  | Fukasawa                                                                                                          |
-| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| <img src='./docs/theme-next.png' width='300'/> [预览NEXT](https://preview.tangly1024.com/?theme=next) | <img src='./docs/theme-medium.png' width='300'/> [预览MEDIUM](https://preview.tangly1024.com/?theme=medium) | <img src='./docs/theme-hexo.png' width='300'/> [预览HEXO](https://preview.tangly1024.com/?theme=hexo) | <img src='./docs/theme-fukasawa.png' width='300'/> [预览FUKASAWA](https://preview.tangly1024.com/?theme=fukasawa) |
+### 主题专属配置（建议写到 Notion 配置表）
 
-## 致谢
+- **`RUKA_LOGO_URI`**
+  - Header Logo
+  - 示例：`/logo.png` 或 `https://example.com/logo.svg`
+- **`RUKA_AUTHOR_DESCRIPTION`**
+  - 作者简介（侧边栏/抽屉/文章页信息区）
+  - 示例：`FullStack / 创作者 / 碳基生物`
 
-感谢Craig Hart发起的Nobelium项目
+## 部署
 
-<table><tr align="left">
-  <td align="center"><a href="https://github.com/craigary" title="Craig Hart"><img src="https://avatars.githubusercontent.com/u/10571717" width="64px;"alt="Craig Hart"/></a><br/><a href="https://github.com/craigary" title="Craig Hart">Craig Hart</a></td>
-</tr></table>
+本仓库本身是主题代码，通常会作为 **NotionNext 主项目**的一部分进行部署。
 
-## 贡献者
+### 部署到 Vercel
 
-致敬每一位开发者！
+- **[步骤 1]** 在你的 NotionNext 主项目中集成本主题（见上文「使用方式」）
+- **[步骤 2]** 将 NotionNext 主项目推送到 GitHub
+- **[步骤 3]** 在 Vercel 导入该仓库
+- **[步骤 4]** 配置环境变量（按 NotionNext 的要求配置）
+  - `NOTION_PAGE_ID`
+- **[步骤 5]** Deploy
 
-[![Contributors](https://contrib.rocks/image?repo=tangly1024/NotionNext)](https://github.com/tangly1024/NotionNext/graphs/contributors)
+### 自托管（VPS / Docker）
 
-## 引用技术
+在 NotionNext 主项目目录中：
 
-- **框架**: [Next.js](https://nextjs.org)
-- **样式**: [Tailwind CSS](https://www.tailwindcss.cn/)
-- **渲染**: [React-notion-x](https://github.com/NotionX/react-notion-x)
-- **评论**: [Twikoo](https://github.com/imaegoo/twikoo), [Giscus](https://giscus.app/zh-CN), [Gitalk](https://gitalk.github.io), [Cusdis](https://cusdis.com), [Utterances](https://utteranc.es)
-- **图标**: [Fontawesome](https://fontawesome.com/v6/icons/)
+- 安装依赖：`npm i` / `pnpm i`
+- 构建：`npm run build`
+- 运行：`npm run start`
 
-## 🔗 友情链接
+同样需要配置 NotionNext 所需的环境变量，并确保 `NEXT_PUBLIC_THEME=ruka`。
 
-- [Elog](https://github.com/LetTTGACO/elog) Markdown 批量导出工具、开放式跨平台博客解决方案，随意组合写作平台(语雀/Notion/FlowUs/飞书)和博客平台(Hexo/Vitepress/Halo/Confluence/WordPress等)
+## 开发
+
+推荐在 NotionNext 主项目中进行开发调试（本仓库不额外引入新的运行命令）。
+
+- **[步骤 1]** 将本主题放入 NotionNext 项目：`themes/ruka`
+- **[步骤 2]** 配置 `blog.config.js`
+  - `THEME: 'ruka'`
+  - `NOTION_PAGE_ID: '...'`
+- **[步骤 3]** 安装依赖
+  - `npm i` / `pnpm i`
+- **[步骤 4]** 本地开发
+  - `npm run dev`
+- **[步骤 5]** 构建与运行（可选）
+  - `npm run build`
+  - `npm run start`
+
+## 鸣谢
+
+<a href="https://github.com/cosZone/astro-koharu" title="cosZone/astro-koharu">
+  <img src="https://avatars.githubusercontent.com/u/90290079" width="56" height="56" alt="cosZone" />
+</a>
 
 ## License
 
-The MIT License.
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=tangly1024/NotionNext&type=Date)](https://star-history.com/#tangly1024/NotionNext&Date)
+MIT

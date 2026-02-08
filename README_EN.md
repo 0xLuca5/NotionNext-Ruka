@@ -1,71 +1,93 @@
-# Free Installation and Usage Guide
+# NotionNext-Ruka
 
-Click here to access the help documentation: NotionNext Help Manual - (Completely Free)
+`NotionNext-Ruka` is a theme repository based on [NotionNext](https://github.com/tangly1024/NotionNext).
 
-## Rights Statement
+[中文](./README.md) | [English](./README_EN.md)
 
-This project's tutorial is a free and open resource intended solely for personal learning use. It is strictly prohibited for any individual or organization to use this tutorial for commercial purposes, including but not limited to direct sales, indirect charges, or any other forms of profit. When reproducing, copying, or sharing this tutorial, the author's information must be retained, and the source clearly cited.
+## Feature Status
 
-This project only offers paid consultation services authorized by the author's team. Please be vigilant against fraud. Any unauthorized paid services may be subject to legal risks.
-
-You can set up your personal website in just a few minutes. Here is the link to my free tutorial:
-
-# NotionNext
-
-<p>
-  <a aria-label="GitHub commit activity" href="https://github.com/tangly1024/NotionNext/commits/main" title="GitHub commit activity">
-    <img src="https://img.shields.io/github/commit-activity/m/tangly1024/NotionNext?style=for-the-badge"/>
-  </a>
-  <a aria-label="GitHub contributors" href="https://github.com/tangly1024/NotionNext/graphs/contributors" title="GitHub contributors">
-    <img src="https://img.shields.io/github/contributors/tangly1024/NotionNext?color=orange&style=for-the-badge"/>
-  </a>
-  <a aria-label="Build status" href="#" title="Build status">
-    <img src="https://img.shields.io/github/deployments/tangly1024/NotionNext/Production?logo=Vercel&style=for-the-badge"/>
-  </a>
-  <a aria-label="Powered by Vercel" href="https://vercel.com?utm_source=Craigary&utm_campaign=oss" title="Powered by Vercel">
-    <img src="https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg" height="28"/>
-  </a>
-</p>
-
-
-[中文文档](./README.md) | README in English
-
-<hr/>
-
-A static blog system built with NextJS and Notion API, deployed on Vercel. Designed for Notion and all creators.
-
+- [x] **Home page**
+- [x] **Post page**
+- [ ] **Categories**
+- [ ] **Tags page**
+- [ ] **Post word count**
 
 ## Preview
+![preview](images/preview.png)
 
-Live Demo：[https://preview.tangly1024.com/](https://preview.tangly1024.com/) ，Project supports switching between multiple themes. Can't find a theme you like? How about [contributing](/CONTRIBUTING.md) one?~
+## Usage
 
-| Next | Medium | Hexo | Fukasawa |
-|--|--|--|--|
-| <img src='./docs/theme-next.png' width='300'/> [NEXT](https://preview.tangly1024.com/?theme=next)  | <img src='./docs/theme-medium.png' width='300'/> [MEDIUM](https://preview.tangly1024.com/?theme=medium) | <img src='./docs/theme-hexo.png' width='300'/> [HEXO](https://preview.tangly1024.com/?theme=hexo) | <img src='./docs/theme-fukasawa.png' width='300'/> [FUKASAWA](https://preview.tangly1024.com/?theme=fukasawa) |
+### Option A: Use it as a theme directory in your NotionNext project
 
-## Acknowledgements
+- **[Step 1]** Copy this repo's `themes/ruka` into your NotionNext project as `themes/ruka`
+- **[Step 2]** Enable the theme in `blog.config.js`:
+  - `THEME: 'ruka'`
+- **[Step 3]** Run / build your NotionNext project
 
-Special thanks to Craig Hart for initiating the Nobelium project.
+### Option B: Fork and develop this repo
 
-<table><tr align="left">
-  <td align="center"><a href="https://github.com/craigary" title="Craig Hart"><img src="https://avatars.githubusercontent.com/u/10571717" width="64px;"alt="Craig Hart"/></a><br/><a href="https://github.com/craigary" title="Craig Hart">Craig Hart</a></td>
-</tr></table>
+You can treat this repo as your NotionNext theme workspace and customize:
 
-## Contributors
+- `themes/ruka/components/*`
+- `themes/ruka/style.js`
+- `themes/ruka/config.js`
 
-This project exists thanks to all the people who contribute.
+## Configuration
 
-[![Contributors](https://contrib.rocks/image?repo=tangly1024/NotionNext)](https://github.com/tangly1024/NotionNext/graphs/contributors)
+Theme configs are read from the Notion config table first. Some options can also fall back to `themes/ruka/config.js`.
 
-## Technologies Used
+### Theme-specific keys (recommended in the Notion config table)
 
-- **Technical Framework**: [Next.js](https://nextjs.org)
-- **Styles**: [Tailwind CSS](https://www.tailwindcss.cn/)
-- **Rendering Tool**: [React-notion-x](https://github.com/NotionX/react-notion-x)
-- **COMMENT**: [Twikoo](https://github.com/imaegoo/twikoo), [Giscus](https://giscus.app/zh-CN), [Gitalk](https://gitalk.github.io), [Cusdis](https://cusdis.com), [Utterances](https://utteranc.es)
-- **ICON**: [Fontawesome](https://fontawesome.com/v6/icons/)
+- **`RUKA_LOGO_URI`**
+  - Header logo
+  - Example: `/logo.png` or `https://example.com/logo.svg`
+- **`RUKA_AUTHOR_DESCRIPTION`**
+  - Author bio (sidebar/drawer/post meta)
+  - Example: `FullStack / Creator / Carbon-based life`
 
+## Deployment
+
+This repository contains theme code. In most cases you deploy your **NotionNext main project** (with this theme integrated).
+
+### Deploy to Vercel
+
+- **[Step 1]** Integrate the theme into your NotionNext project (see "Usage")
+- **[Step 2]** Push your NotionNext project to GitHub
+- **[Step 3]** Import the repo in Vercel
+- **[Step 4]** Configure environment variables required by NotionNext
+  - `NOTION_PAGE_ID`
+- **[Step 5]** Deploy
+
+### Self-host (VPS / Docker)
+
+In your NotionNext project directory:
+
+- Install: `npm i` / `pnpm i`
+- Build: `npm run build`
+- Start: `npm run start`
+
+## Development
+
+It is recommended to develop and debug in the NotionNext main project.
+
+- **[Step 1]** Put the theme into your NotionNext project: `themes/ruka`
+- **[Step 2]** Update `blog.config.js`
+  - `THEME: 'ruka'`
+  - `NOTION_PAGE_ID: '...'`
+- **[Step 3]** Install dependencies
+  - `npm i` / `pnpm i`
+- **[Step 4]** Run dev server
+  - `npm run dev`
+- **[Step 5]** Build & start (optional)
+  - `npm run build`
+  - `npm run start`
+
+## Credits
+
+<a href="https://github.com/cosZone/astro-koharu" title="cosZone/astro-koharu">
+  <img src="https://avatars.githubusercontent.com/u/90290079" width="56" height="56" alt="cosZone" />
+</a>
 
 ## License
 
-The MIT License.
+MIT
