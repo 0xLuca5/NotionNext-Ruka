@@ -696,7 +696,7 @@ export const Header = props => {
         onClick={() => setDrawerOpen(false)}
       />
       <div
-        className={`bg-white dark:bg-[#0b0f1a] tablet:flex fixed inset-y-0 left-0 z-50 hidden h-screen w-[70vw] min-w-64 transform px-4 pt-6 shadow-lg backdrop-blur-sm transition-transform duration-300 md:px-0 flex-col overflow-y-auto rounded-r-3xl ${
+        className={`bg-white dark:bg-[#0b0f1a] fixed inset-y-0 left-0 z-50 flex h-screen w-[70vw] min-w-64 transform px-4 pt-6 shadow-lg backdrop-blur-sm transition-transform duration-300 md:hidden flex-col overflow-y-auto rounded-r-3xl ${
           drawerOpen ? 'translate-x-0' : '-translate-x-full'
         }`}>
         <button

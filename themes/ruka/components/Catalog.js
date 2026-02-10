@@ -221,28 +221,14 @@ const Catalog = ({ toc, variant }) => {
               nodes.push(
                 <div key={parentId}>
                   <div className='flex items-center gap-1'>
-                    {hasChildren && (
-                      <button
-                        type='button'
-                        onClick={() => toggleParent(parentId)}
-                        className='shrink-0 rounded px-1 py-1 text-gray-800/70 hover:bg-black/5 dark:text-gray-200/70 dark:hover:bg-white/10'
-                        aria-label={expanded ? 'collapse' : 'expand'}>
-                        <i
-                          className={`fas fa-chevron-right text-xs transition-transform ${
-                            expanded ? 'rotate-90' : ''
-                          }`}
-                        />
-                      </button>
-                    )}
-
                     <a
                       href={`#${parentId}`}
-                      onClick={() => onTocNavigate(parentId, parentId)}
+                      onPointerDown={() => onTocNavigate(parentId, parentId)}
                       className={`catalog-item catalog-item-level-${
                         parent.indentLevel || 0
                       } block flex-1 rounded-md px-2 py-1 text-sm transition-colors hover:bg-black/5 dark:hover:bg-white/10 ${
                         isActiveParent
-                          ? 'text-primary font-medium'
+                          ? 'text-primary font-medium bg-black/5 dark:bg-white/10'
                           : 'text-gray-800/80 dark:text-gray-200/80'
                       }`}>
                       <span className='truncate'>{parent.text}</span>
@@ -262,10 +248,10 @@ const Catalog = ({ toc, variant }) => {
                           <a
                             key={childId}
                             href={`#${childId}`}
-                            onClick={() => onTocNavigate(childId, parentId)}
+                            onPointerDown={() => onTocNavigate(childId, parentId)}
                             className={`catalog-item ${levelClass} block rounded-md px-2 py-1 text-sm transition-colors hover:bg-black/5 dark:hover:bg-white/10 ${
                               isActive
-                                ? 'text-primary font-medium'
+                                ? 'text-primary font-medium bg-black/5 dark:bg-white/10'
                                 : 'text-gray-800/80 dark:text-gray-200/80'
                             }`}>
                             <span

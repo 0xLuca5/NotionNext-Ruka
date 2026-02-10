@@ -218,6 +218,13 @@ const Style = () => {
       transition: transform 500ms ease-out;
     }
 
+    .kira-post-cover-summary {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+    }
+
     .kira-post:hover .kira-post-cover-image {
       transform: scale(1.05);
     }
@@ -233,6 +240,13 @@ const Style = () => {
       box-sizing: border-box;
       padding: 18px;
       z-index: 1;
+    }
+
+    @media (max-width: 640px) {
+      .kira-post-cover h1 {
+        font-size: 20px;
+        padding: 14px;
+      }
     }
 
     .kira-post-cover h1::after {

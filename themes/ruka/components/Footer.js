@@ -90,15 +90,6 @@ export const Footer = props => {
             className='footer-link font-medium transition-all duration-300'>
             NotionNext-Ruka
           </a>
-          <span className='opacity-50'>·</span>
-          <span className='opacity-75'>Inspired by</span>
-          <a
-            href='https://github.com/cosZone/astro-koharu'
-            target='_blank'
-            rel='noreferrer'
-            className='footer-link font-medium transition-all duration-300'>
-            astro-koharu
-          </a>
         </div>
 
         <div className='text-center text-xs'>

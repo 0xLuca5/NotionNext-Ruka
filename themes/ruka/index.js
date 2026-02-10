@@ -123,6 +123,13 @@ const PostCover = props => {
     siteInfo?.pageCover ||
     siteConfig('HOME_BANNER_IMAGE')
 
+  const bannerImagePosition =
+    typeof post?.pageCoverPosition === 'number'
+      ? post.pageCoverPosition
+      : typeof siteInfo?.pageCoverPosition === 'number'
+        ? siteInfo.pageCoverPosition
+        : 0.5
+
   const wordCount = Number.isFinite(post?.wordCount) ? post.wordCount : 0
   const readTime = Number.isFinite(post?.readTime) ? post.readTime : 0
 
@@ -168,7 +175,12 @@ const PostCover = props => {
       <div className='hero-bottom-fade absolute inset-x-0 bottom-0 h-28' />
 
       <div className='relative -z-10 h-full min-h-60 w-full'>
-        <LazyImage src={bannerImage} className='h-full w-full object-cover' alt='cover' />
+        <LazyImage
+          src={bannerImage}
+          className='h-full w-full object-cover'
+          style={{ objectPosition: `50% ${(1 - bannerImagePosition) * 100}%` }}
+          alt='cover'
+        />
       </div>
 
       <WaveSvg />
@@ -462,47 +474,12 @@ const LayoutBase = props => {
         </div>
       </div>
 
-      {post && isMobile && hasSider && (
-        <>
-          <button
-            type='button'
-            aria-label='toggle-sidebar'
-            onClick={() => setSidebarDrawerOpen(v => !v)}
-            className='fixed left-4 bottom-4 z-30 rounded-full bg-white/85 backdrop-blur px-4 py-3 text-gray-800 shadow-card dark:bg-black/60 dark:text-gray-100'
-          >
-            <i className='fas fa-bars' />
-          </button>
-
-          <div
-            className={`fixed inset-0 z-40 ${sidebarDrawerOpen ? '' : 'pointer-events-none'}`}
-          >
-            <div
-              id='sidebar-drawer-background'
-              onClick={() => setSidebarDrawerOpen(false)}
-              className={`absolute inset-0 transition-opacity duration-300 ${
-                sidebarDrawerOpen ? 'opacity-100' : 'opacity-0'
-              }`}
-            />
-
-            <aside
-              id='sidebar-drawer'
-              className={`absolute left-0 top-[var(--ruka-header-offset)] h-[calc(100dvh-var(--ruka-header-offset))] w-[82vw] max-w-[360px] overflow-y-auto px-3 py-4 transition-transform duration-300 ${
-                sidebarDrawerOpen ? 'translate-x-0' : '-translate-x-full'
-              }`}
-            >
-              {effectiveSider}
-            </aside>
-          </div>
-        </>
-
-      )}
-
       {/* 页脚 */}
 
       <Footer {...props} />
 
       {/* Live2D */}
-      <div className='fixed left-2 bottom-2 z-20 select-none'>
+      <div className='fixed left-2 bottom-2 z-20 select-none hidden md:block'>
         <Live2D />
       </div>
 
@@ -550,6 +527,8 @@ const LayoutIndex = props => {
 
   const { posts } = props
 
+  const allPosts = props?.allPosts
+
   const noticePost = props?.notice
 
   const noticeHref = noticePost?.href || (noticePost?.slug ? `/post/${noticePost.slug}` : null)
@@ -558,29 +537,7 @@ const LayoutIndex = props => {
 
     noticePost?.pageCoverThumbnail || noticePost?.pageCover || noticePost?.pageCoverUrl
 
-  const noticeDate = noticePost?.date?.start_date || noticePost?.publishDay || noticePost?.createdTime
-
-  
-
-  // 计算字数和阅读时间（如果没有的话）
-
   const postDescription = noticePost?.summary || noticePost?.description || ''
-
-  const metaText = `${noticePost?.title || ''} ${postDescription}`.trim()
-
-  const estimated = metaText ? countWords(metaText) : { wordCount: 0, readTime: 0 }
-
-  const noticeWordCount = Number.isFinite(noticePost?.wordCount) && noticePost.wordCount > 0
-
-    ? noticePost.wordCount
-
-    : estimated.wordCount
-
-  const noticeReadTime = Number.isFinite(noticePost?.readTime) && noticePost.readTime > 0
-
-    ? noticePost.readTime
-
-    : estimated.readTime
 
 
 
@@ -609,49 +566,14 @@ const LayoutIndex = props => {
 
               )}
 
-              <h1>{noticePost?.title}</h1>
-
-              {/* 元数据显示在封面右上角 */}
-
-              <div className='absolute top-4 right-4 flex flex-col gap-2 text-white text-xs z-10'>
-
-                {noticeDate && (
-
-                  <span className='flex items-center gap-1 bg-foreground/50 backdrop-blur-sm px-2 py-1 rounded'>
-
-                    <i className='fas fa-calendar-alt' />
-
-                    {noticeDate}
-
+              <h1>
+                <span className='block line-clamp-1'>{noticePost?.title}</span>
+                {postDescription && (
+                  <span className='kira-post-cover-summary mt-1 block text-sm opacity-90 line-clamp-2'>
+                    {postDescription}
                   </span>
-
                 )}
-
-                {noticeWordCount > 0 && (
-
-                  <span className='flex items-center gap-1 bg-foreground/50 backdrop-blur-sm px-2 py-1 rounded'>
-
-                    <i className='fas fa-file-word' />
-
-                    {noticeWordCount} 字
-
-                  </span>
-
-                )}
-
-                {noticeReadTime > 0 && (
-
-                  <span className='flex items-center gap-1 bg-foreground/50 backdrop-blur-sm px-2 py-1 rounded'>
-
-                    <i className='fas fa-clock' />
-
-                    大概 {noticeReadTime} 分钟
-
-                  </span>
-
-                )}
-
-              </div>
+              </h1>
 
             </div>
 
@@ -665,7 +587,7 @@ const LayoutIndex = props => {
 
       <LayoutPostList {...props} />
 
-      <PostRandom posts={posts} excludePosts={recommendPosts} />
+      <PostRandom posts={allPosts || posts} excludePosts={recommendPosts} />
 
     </div>
 

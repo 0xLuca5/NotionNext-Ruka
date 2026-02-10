@@ -35,6 +35,8 @@ export async function getStaticProps(req) {
     page => page.type === 'Post' && page.status === 'Published'
   )
 
+  props.allPosts = props.posts
+
     // 生成首页推荐文章（只显示带"推荐"标签的文章）
 
   if (props.posts && props.posts.length > 0) {
