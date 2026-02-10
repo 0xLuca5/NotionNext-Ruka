@@ -727,7 +727,9 @@ const LayoutSlug = props => {
 
             <NotionPage post={post} />
 
-            <ShareBar post={post} />
+            <div className='flex justify-center'>
+              <ShareBar post={post} />
+            </div>
 
           </div>
 

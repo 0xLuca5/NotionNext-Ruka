@@ -22,7 +22,8 @@ const BlogItem = ({ post, index = 0 }) => {
 
   const postDescription = post?.summary || post?.description || ''
   const wordCount = Number.isFinite(post?.wordCount) ? post.wordCount : 0
-  const readTime = Number.isFinite(post?.readTime) ? post.readTime : 0
+  const computedReadTimeFromWords = wordCount > 0 ? Math.floor(wordCount / 400) + 1 : 0
+  const readTime = Number.isFinite(post?.readTime) ? post.readTime : computedReadTimeFromWords
   const dateText = post?.date?.start_date || post?.publishDay || post?.createdTime
 
   // showPageCover 是图片 URL，需要转换为布尔值
@@ -73,8 +74,8 @@ const BlogItem = ({ post, index = 0 }) => {
                 {wordCount} 字
               </span>
             )}
-            {readTime > 0 && (
-              <span className='post-meta-readtime hidden md:flex items-center gap-1'>
+            {wordCount > 0 && readTime > 0 && (
+              <span className='post-meta-readtime flex items-center gap-1'>
                 <i className='fas fa-clock' />
                 {readTime} 分钟
               </span>
