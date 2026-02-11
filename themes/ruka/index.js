@@ -508,7 +508,11 @@ const LayoutBase = props => {
 
       {/* 页脚 */}
 
-      <Footer {...props} />
+      <Footer
+        {...props}
+        hasSider={hasSider}
+        layoutSidebarReverse={LAYOUT_SIDEBAR_REVERSE}
+      />
 
       {/* Live2D */}
       <div className='fixed left-2 bottom-2 z-20 select-none hidden md:block'>
