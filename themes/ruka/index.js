@@ -8,7 +8,7 @@ import replaceSearchResult from '@/components/Mark'
 
 import NotionPage from '@/components/NotionPage'
 
-import ShareBar from '@/components/ShareBar'
+import dynamic from 'next/dynamic'
 
 import Live2D from '@/components/Live2D'
 
@@ -59,6 +59,14 @@ import TitleBar from './components/TitleBar'
 import CONFIG from './config'
 
 import { Style } from './style'
+
+
+
+const ShareButtons = dynamic(() => import('@/components/ShareButtons'), {
+
+  ssr: false
+
+})
 
 
 
@@ -419,6 +427,30 @@ const LayoutBase = props => {
 
   const LAYOUT_SIDEBAR_REVERSE = siteConfig('LAYOUT_SIDEBAR_REVERSE', false)
 
+  const [shareOpen, setShareOpen] = useState(false)
+
+  useEffect(() => {
+
+    setShareOpen(false)
+
+  }, [router?.asPath])
+
+  const shareEnabled = (() => {
+
+    try {
+
+      return JSON.parse(siteConfig('POST_SHARE_BAR_ENABLE'))
+
+    } catch {
+
+      return false
+
+    }
+
+  })()
+
+  const showShareButton = shareEnabled && post?.type === 'Post'
+
   return (
     <div
       id='theme-ruka'
@@ -487,7 +519,43 @@ const LayoutBase = props => {
 
       {/* 回顶按钮 */}
 
-      <div className='fixed right-4 bottom-4 z-10'>
+      <div className='fixed right-4 bottom-4 z-10 flex flex-col items-end gap-2'>
+
+        {showShareButton && (
+
+          <div
+            className='flex items-center justify-end gap-2'
+            onMouseEnter={() => setShareOpen(true)}
+            onMouseLeave={() => setShareOpen(false)}
+          >
+
+            <Transition
+              show={shareOpen}
+              appear={true}
+              enter='transition ease-out duration-300'
+              enterFrom='opacity-0 translate-x-6 scale-90'
+              enterTo='opacity-100 translate-x-0 scale-100'
+              leave='transition ease-in duration-200'
+              leaveFrom='opacity-100 translate-x-0 scale-100'
+              leaveTo='opacity-0 translate-x-6 scale-90'
+            >
+              <div className='rounded-2xl bg-white/90 dark:bg-[#0b0f1a]/90 shadow-lg backdrop-blur px-3 py-2'>
+                <div className='flex flex-nowrap justify-end gap-2 w-max max-w-[calc(100vw-6rem)] overflow-x-auto'>
+                  <ShareButtons post={post} />
+                </div>
+              </div>
+            </Transition>
+
+            <div
+              title={locale?.POST?.SHARE || 'Share'}
+              className='cursor-pointer p-2 text-center'
+              onClick={() => setShareOpen(v => !v)}>
+              <i className='fas fa-share-alt text-xl' />
+            </div>
+
+          </div>
+
+        )}
 
         <div
 
@@ -726,10 +794,6 @@ const LayoutSlug = props => {
           <div id='article-wrapper'>
 
             <NotionPage post={post} />
-
-            <div className='flex justify-center'>
-              <ShareBar post={post} />
-            </div>
 
           </div>
 

@@ -28,6 +28,7 @@ const BlogItem = ({ post, index = 0 }) => {
 
   // showPageCover 是图片 URL，需要转换为布尔值
   const hasCover = !!showPageCover
+  const moreButtonOnRight = !hasCover || coverOnLeft
 
   return (
     <article className='hover:shadow-card-darker group text-card-foreground shadow-card relative flex rounded-lg bg-white transition-shadow md:flex-col dark:bg-transparent post-item-card mb-4'>
@@ -138,19 +139,13 @@ const BlogItem = ({ post, index = 0 }) => {
         <SmartLink
           href={post?.href}
           className={`post-more absolute -bottom-1 ${
-            hasCover
-              ? coverOnLeft
-                ? '-right-1'
-                : '-left-1'
-              : '-right-1'
+            moreButtonOnRight ? '-right-1' : '-left-1'
           }`}>
           <div
-            className={`bg-gradient-shoka-button rounded-2xl transition-all hover:translate-y-1 hover:scale-105 px-4 py-2 text-sm text-white font-medium ${
-              hasCover
-                ? coverOnLeft
-                  ? 'rounded-se-none rounded-es-none hover:translate-x-1 md:rounded-ss-2xl md:rounded-se-none md:rounded-ee-2xl md:rounded-es-none md:hover:translate-x-1'
-                  : 'rounded-ss-none rounded-ee-none hover:-translate-x-1 md:rounded-ss-2xl md:rounded-se-none md:rounded-ee-2xl md:rounded-es-none md:hover:translate-x-1'
-                : 'rounded-se-none rounded-es-none hover:translate-x-1 md:rounded-ss-2xl md:rounded-se-none md:rounded-ee-2xl md:rounded-es-none md:hover:translate-x-1'
+            className={`bg-gradient-shoka-button rounded-2xl transition-all hover:translate-y-1 hover:scale-105 h-10 px-5 inline-flex items-center justify-center whitespace-nowrap text-sm text-white font-medium ${
+              moreButtonOnRight
+                ? 'rounded-se-none rounded-es-none'
+                : 'rounded-ss-none rounded-ee-none'
             }`}>
             more...
           </div>
