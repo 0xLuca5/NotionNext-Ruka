@@ -21,9 +21,9 @@ If you find this theme helpful, please consider giving this repo a Star.
 
 ## Preview
 <p align="center">
-  <img src="/public/images/preview.png" width="32%" />
-  <img src="/public/images/preview1.png" width="32%" />
-  <img src="/public/images/preview2.png" width="32%" />
+  <img src="/public/images/preview.png" width="100%" />
+  <img src="/public/images/preview1.png" width="50%" />
+  <img src="/public/images/preview2.png" width="50%" />
 </p>
 
 ## Configuration
