@@ -20,9 +20,11 @@ If you find this theme helpful, please consider giving this repo a Star.
 - [ ] **Archive page**
 
 ## Preview
-![preview](/public/images/preview.png)
-![preview](/public/images/preview1.png)
-![preview](/public/images/preview2.png)
+<p align="center">
+  <img src="/public/images/preview.png" width="32%" />
+  <img src="/public/images/preview1.png" width="32%" />
+  <img src="/public/images/preview2.png" width="32%" />
+</p>
 
 ## Configuration
 
