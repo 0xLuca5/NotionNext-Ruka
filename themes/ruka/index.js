@@ -146,7 +146,7 @@ const PostCover = props => {
       <div className='absolute inset-0 h-full bg-black/40' />
 
       <div className='absolute inset-0 bottom-[8vh] flex flex-col items-center justify-center px-5 text-white'>
-        <h1 className='shadow-text text-center text-4xl/[1.2] md:text-5xl/[1.2] font-bold tracking-widest max-w-7xl'>
+        <h1 className='shadow-text text-center text-xl/[1.2] md:text-5xl/[1.2] font-bold tracking-widest max-w-7xl'>
           {title}
         </h1>
 
