@@ -479,7 +479,7 @@ export const SideBar = props => {
     return (
       <aside className='w-full rounded-xl overflow-hidden mb-6 '>
         <div className='p-5 flex flex-col items-center'>
-          <div className='relative h-36 w-36 rounded-full overflow-hidden shadow-card-darker'>
+          <div className='relative h-36 w-36 rounded-full overflow-hidden shadow-none md:shadow-card-darker'>
             <LazyImage
               src={avatar}
               alt='avatar'
@@ -612,7 +612,7 @@ export const SideBar = props => {
 
       {/* 最近评论 */}
       {COMMENT_WALINE_SERVER_URL && COMMENT_WALINE_RECENT && (
-        <aside className='w-full rounded shadow overflow-hidden mb-6'>
+        <aside className='w-full rounded shadow-none md:shadow overflow-hidden mb-6'>
           <h3 className='text-sm bg-gray-100 text-gray-700 dark:bg-hexo-black-gray dark:text-gray-200 py-3 px-4 dark:border-hexo-black-gray border-b'>
             {locale.COMMON.RECENT_COMMENTS}
           </h3>
@@ -638,7 +638,7 @@ export const SideBar = props => {
       'flex h-11 items-center justify-center rounded-xl text-sm leading-none whitespace-nowrap overflow-hidden transition-all duration-300'
     const btnInactive =
       'bg-transparent text-gray-700/70 hover:bg-black/5 dark:text-white/70 dark:hover:bg-white/10'
-    const btnActive = 'bg-gradient-shoka-button text-white shadow-card'
+    const btnActive = 'bg-gradient-shoka-button text-white shadow-none md:shadow-card'
 
     return (
       <>

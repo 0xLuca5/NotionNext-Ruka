@@ -109,7 +109,7 @@ const ShareButtons = ({ post }) => {
                 key={singleService}
                 url={shareUrl}
                 hashtag={hashTags}
-                className='mx-1'>
+                className='leading-none'>
                 <FacebookIcon size={32} round />
               </FacebookShareButton>
             )
@@ -119,7 +119,7 @@ const ShareButtons = ({ post }) => {
                 key={singleService}
                 url={shareUrl}
                 appId={siteConfig('FACEBOOK_APP_ID')}
-                className='mx-1'>
+                className='leading-none'>
                 <FacebookMessengerIcon size={32} round />
               </FacebookMessengerShareButton>
             )
@@ -128,7 +128,7 @@ const ShareButtons = ({ post }) => {
               <LineShareButton
                 key={singleService}
                 url={shareUrl}
-                className='mx-1'>
+                className='leading-none'>
                 <LineIcon size={32} round />
               </LineShareButton>
             )
@@ -140,7 +140,7 @@ const ShareButtons = ({ post }) => {
                 title={titleWithSiteInfo}
                 windowWidth={660}
                 windowHeight={460}
-                className='mx-1'>
+                className='leading-none'>
                 <RedditIcon size={32} round />
               </RedditShareButton>
             )
@@ -151,7 +151,7 @@ const ShareButtons = ({ post }) => {
                 url={shareUrl}
                 subject={titleWithSiteInfo}
                 body={body}
-                className='mx-1'>
+                className='leading-none'>
                 <EmailIcon size={32} round />
               </EmailShareButton>
             )
@@ -162,7 +162,7 @@ const ShareButtons = ({ post }) => {
                 url={shareUrl}
                 title={titleWithSiteInfo}
                 hashtags={tags}
-                className='mx-1'>
+                className='leading-none'>
                 <TwitterIcon size={32} round />
               </TwitterShareButton>
             )
@@ -172,7 +172,7 @@ const ShareButtons = ({ post }) => {
                 key={singleService}
                 url={shareUrl}
                 title={titleWithSiteInfo}
-                className='mx-1'>
+                className='leading-none'>
                 <TelegramIcon size={32} round />
               </TelegramShareButton>
             )
@@ -183,7 +183,7 @@ const ShareButtons = ({ post }) => {
                 url={shareUrl}
                 title={titleWithSiteInfo}
                 separator=':: '
-                className='mx-1'>
+                className='leading-none'>
                 <WhatsappIcon size={32} round />
               </WhatsappShareButton>
             )
@@ -192,7 +192,7 @@ const ShareButtons = ({ post }) => {
               <LinkedinShareButton
                 key={singleService}
                 url={shareUrl}
-                className='mx-1'>
+                className='leading-none'>
                 <LinkedinIcon size={32} round />
               </LinkedinShareButton>
             )
@@ -202,7 +202,7 @@ const ShareButtons = ({ post }) => {
                 key={singleService}
                 url={shareUrl}
                 media={image}
-                className='mx-1'>
+                className='leading-none'>
                 <PinterestIcon size={32} round />
               </PinterestShareButton>
             )
@@ -212,7 +212,7 @@ const ShareButtons = ({ post }) => {
                 key={singleService}
                 url={shareUrl}
                 image={image}
-                className='mx-1'>
+                className='leading-none'>
                 <VKIcon size={32} round />
               </VKShareButton>
             )
@@ -222,7 +222,7 @@ const ShareButtons = ({ post }) => {
                 key={singleService}
                 url={shareUrl}
                 image={image}
-                className='mx-1'>
+                className='leading-none'>
                 <OKIcon size={32} round />
               </OKShareButton>
             )
@@ -233,7 +233,7 @@ const ShareButtons = ({ post }) => {
                 url={shareUrl}
                 title={titleWithSiteInfo}
                 tags={tags}
-                className='mx-1'>
+                className='leading-none'>
                 <TumblrIcon size={32} round />
               </TumblrShareButton>
             )
@@ -244,7 +244,7 @@ const ShareButtons = ({ post }) => {
                 url={shareUrl}
                 title={titleWithSiteInfo}
                 description={shareUrl}
-                className='mx-1'>
+                className='leading-none'>
                 <LivejournalIcon size={32} round />
               </LivejournalShareButton>
             )
@@ -254,7 +254,7 @@ const ShareButtons = ({ post }) => {
                 key={singleService}
                 url={shareUrl}
                 title={titleWithSiteInfo}
-                className='mx-1'>
+                className='leading-none'>
                 <MailruIcon size={32} round />
               </MailruShareButton>
             )
@@ -264,7 +264,7 @@ const ShareButtons = ({ post }) => {
                 key={singleService}
                 url={shareUrl}
                 title={titleWithSiteInfo}
-                className='mx-1'>
+                className='leading-none'>
                 <ViberIcon size={32} round />
               </ViberShareButton>
             )
@@ -275,7 +275,7 @@ const ShareButtons = ({ post }) => {
                 url={shareUrl}
                 quote={titleWithSiteInfo}
                 hashtag={hashTags}
-                className='mx-1'>
+                className='leading-none'>
                 <WorkplaceIcon size={32} round />
               </WorkplaceShareButton>
             )
@@ -286,7 +286,7 @@ const ShareButtons = ({ post }) => {
                 url={shareUrl}
                 title={titleWithSiteInfo}
                 image={image}
-                className='mx-1'>
+                className='leading-none'>
                 <WeiboIcon size={32} round />
               </WeiboShareButton>
             )
@@ -296,7 +296,7 @@ const ShareButtons = ({ post }) => {
                 key={singleService}
                 url={shareUrl}
                 title={titleWithSiteInfo}
-                className='mx-1'>
+                className='leading-none'>
                 <PocketIcon size={32} round />
               </PocketShareButton>
             )
@@ -306,7 +306,7 @@ const ShareButtons = ({ post }) => {
                 key={singleService}
                 url={shareUrl}
                 title={titleWithSiteInfo}
-                className='mx-1'>
+                className='leading-none'>
                 <InstapaperIcon size={32} round />
               </InstapaperShareButton>
             )
@@ -318,7 +318,7 @@ const ShareButtons = ({ post }) => {
                 title={titleWithSiteInfo}
                 windowWidth={660}
                 windowHeight={460}
-                className='mx-1'>
+                className='leading-none'>
                 <HatenaIcon size={32} round />
               </HatenaShareButton>
             )
@@ -328,7 +328,7 @@ const ShareButtons = ({ post }) => {
                 key={singleService}
                 url={shareUrl}
                 title={titleWithSiteInfo}
-                className='mx-1'>
+                className='leading-none'>
                 <ThreadsIcon size={32} round />
               </ThreadsShareButton>
             )
@@ -336,13 +336,13 @@ const ShareButtons = ({ post }) => {
             return (
               <button
                 key={singleService}
-                className='cursor-pointer bg-blue-600 text-white rounded-full mx-1'>
+                className='cursor-pointer bg-blue-600 text-white rounded-full leading-none'>
                 <a
                   target='_blank'
                   rel='noreferrer'
                   aria-label='Share by QQ'
                   href={`http://connect.qq.com/widget/shareqq/index.html?url=${shareUrl}&sharesource=qzone&title=${title}&desc=${body}`}>
-                  <i className='fab fa-qq w-8' />
+                  <i className='fab fa-qq w-8 leading-none' />
                 </a>
               </button>
             )
@@ -353,9 +353,9 @@ const ShareButtons = ({ post }) => {
                 onMouseLeave={closePopover}
                 aria-label={singleService}
                 key={singleService}
-                className='cursor-pointer bg-green-600 text-white rounded-full mx-1'>
+                className='cursor-pointer bg-green-600 text-white rounded-full leading-none'>
                 <div id='wechat-button'>
-                  <i className='fab fa-weixin w-8' />
+                  <i className='fab fa-weixin w-8 leading-none' />
                 </div>
                 <div className='absolute'>
                   <div
@@ -379,9 +379,9 @@ const ShareButtons = ({ post }) => {
               <button
                 aria-label={singleService}
                 key={singleService}
-                className='cursor-pointer bg-yellow-500 text-white rounded-full mx-1'>
+                className='cursor-pointer bg-yellow-500 text-white rounded-full leading-none'>
                 <div alt={locale.COMMON.URL_COPIED} onClick={copyUrl}>
-                  <i className='fas fa-link w-8' />
+                  <i className='fas fa-link w-8 leading-none' />
                 </div>
               </button>
             )
@@ -391,8 +391,8 @@ const ShareButtons = ({ post }) => {
                 aria-label={singleService}
                 key={singleService}
                 onClick={() => openRedirectShare('https://link.csdn.net/?target=')}
-                className='cursor-pointer rounded-full mx-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500'>
-                <div className='w-8 h-8 rounded-full items-center justify-center'
+                className='cursor-pointer rounded-full leading-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500'>
+                <div className='w-8 h-8 rounded-full flex items-center justify-center'
                   style={{backgroundColor: '#ff6a00'}}>
                   <Image
                     src='/svg/csdn.svg'
@@ -412,7 +412,7 @@ const ShareButtons = ({ post }) => {
                 aria-label={singleService}
                 key={singleService}
                 onClick={() => openRedirectShare('https://link.juejin.cn/?target=')}
-                className='cursor-pointer rounded-full mx-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500'>
+                className='cursor-pointer rounded-full leading-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500'>
                 <div className='w-8 h-8 rounded-full flex items-center justify-center'
                      style={{ backgroundColor: '#5dade2' }}>
                   <Image

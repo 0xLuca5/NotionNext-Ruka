@@ -540,7 +540,7 @@ const LayoutBase = props => {
               leaveTo='opacity-0 translate-x-6 scale-90'
             >
               <div className='rounded-2xl bg-white/90 dark:bg-[#0b0f1a]/90 shadow-lg backdrop-blur px-3 py-2'>
-                <div className='flex flex-nowrap justify-end gap-2 w-max max-w-[calc(100vw-6rem)] overflow-x-auto'>
+                <div className='flex w-full min-w-0 flex-wrap md:flex-nowrap justify-between md:justify-end gap-2 max-w-[calc(100vw-6rem)] overflow-x-auto md:overflow-x-auto'>
                   <ShareButtons post={post} />
                 </div>
               </div>

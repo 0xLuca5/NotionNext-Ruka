@@ -552,6 +552,19 @@ const Style = () => {
       text-shadow: 0 0.2rem 0.3rem rgba(0, 0, 0, 0.5);
     }
 
+    @media (max-width: 767px) {
+      .shadow-box,
+      .shadow-card,
+      .shadow-card-darker,
+      .shadow-home-sider {
+        box-shadow: none !important;
+      }
+
+      .shadow-text {
+        text-shadow: none !important;
+      }
+    }
+
     .scroll-gutter-stable {
       scrollbar-gutter: stable;
     }
