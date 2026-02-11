@@ -4,13 +4,17 @@
 
 [中文](./README.md) | [English](./README_EN.md)
 
+## Please Star
+
+If you find this theme helpful, please consider giving this repo a Star.
+
 ## Feature Status
 
 - [x] **Home page**
 - [x] **Post page**
 - [ ] **Categories**
 - [ ] **Tags page**
-- [ ] **Post word count**
+- [x] **Post word count**
 - [x] **Theme color palette**
 - [x] **Random posts**
 - [ ] **Archive page**
@@ -53,6 +57,11 @@ Theme configs are read from the Notion config table first. Some options can also
 This repository contains theme code. In most cases you deploy your **NotionNext main project** (with this theme integrated).
 
 ### Deploy to Vercel
+
+- Notion config table duplicate:
+  - https://mixolydian-spinach-174.notion.site/30152c4ca1ae8131ab49ece8ae453e92?v=30152c4ca1ae8170a070000cc2053854
+- Installation & deployment guide (NotionNext docs):
+  - https://docs.tangly1024.com/article/vercel-deploy-notion-next
 
 - **[Step 1]** Integrate the theme into your NotionNext project (see "Usage")
 - **[Step 2]** Push your NotionNext project to GitHub

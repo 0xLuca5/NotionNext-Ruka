@@ -4,13 +4,17 @@
 
 [中文](./README.md) | [English](./README_EN.md)
 
+## 求个 Star
+
+如果这个主题对你有帮助，欢迎点一个 Star 支持一下～
+
 ## 功能进度
 
 - [x] **主页**
 - [x] **文章页面**
 - [ ] **分类**
 - [ ] **标签页面**
-- [ ] **文章字数计算**
+- [x] **文章字数计算**
 - [x] **主题色板**
 - [x] **随机文章**
 - [ ] **归档页面**
@@ -53,6 +57,11 @@
 本仓库本身是主题代码，通常会作为 **NotionNext 主项目**的一部分进行部署。
 
 ### 部署到 Vercel
+
+- Notion 配置表 Duplicate：
+  - https://mixolydian-spinach-174.notion.site/30152c4ca1ae8131ab49ece8ae453e92?v=30152c4ca1ae8170a070000cc2053854
+- 安装与部署教程（NotionNext 官方文档）：
+  - https://docs.tangly1024.com/article/vercel-deploy-notion-next
 
 - **[步骤 1]** 在你的 NotionNext 主项目中集成本主题（见上文「使用方式」）
 - **[步骤 2]** 将 NotionNext 主项目推送到 GitHub

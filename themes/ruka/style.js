@@ -207,6 +207,12 @@ const Style = () => {
       background-color: #eee;
     }
 
+    @media (max-width: 640px) {
+      .kira-post-cover {
+        padding-bottom: 56%;
+      }
+    }
+
     .kira-post-cover-image {
       display: block;
       position: absolute;
