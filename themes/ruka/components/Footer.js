@@ -4,26 +4,19 @@ import DarkModeButton from '@/components/DarkModeButton'
 import BLOG from '@/blog.config'
 
 export const Footer = props => {
-  const { allPages, postCount, siteInfo } = props
+  const { postCount, siteInfo, totalWords: totalWordsProp } = props
 
-  const posts = Array.isArray(allPages)
-    ? allPages.filter(p => p?.type === 'Post' && p?.status === 'Published')
-    : []
+  const totalWords = Number.isFinite(totalWordsProp)
+    ? totalWordsProp
+    : Number(totalWordsProp)
+  const totalWordsValue = Number.isFinite(totalWords) ? totalWords : 0
 
-  const totalWords = posts.reduce((sum, p) => {
-    const w = Number.isFinite(p?.wordCount) ? p.wordCount : 0
-    return sum + w
-  }, 0)
-
-  const totalReadTime = posts.reduce((sum, p) => {
-    const t = Number.isFinite(p?.readTime) ? p.readTime : 0
-    return sum + t
-  }, 0)
+  const totalReadTime = totalWordsValue > 0 ? Math.floor(totalWordsValue / 400) + 1 : 0
 
   const formattedWords =
-    totalWords >= 10000
-      ? `${(totalWords / 10000).toFixed(1)}w`
-      : `${totalWords}`
+    totalWordsValue >= 10000
+      ? `${(totalWordsValue / 10000).toFixed(1)}w`
+      : `${totalWordsValue}`
 
   const formattedTime =
     totalReadTime >= 60
@@ -61,7 +54,7 @@ export const Footer = props => {
             className='flex items-center gap-2 opacity-75 transition-opacity duration-300 hover:opacity-100'
             title='文章总数'>
             <i className='fas fa-pen-nib' />
-            <span className='font-medium'>{postCount || posts.length}</span>
+            <span className='font-medium'>{postCount || 0}</span>
             <span className='text-xs'>篇</span>
           </button>
         </div>
