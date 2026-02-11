@@ -21,23 +21,9 @@
 
 ## Preview
 ![preview](/public/images/preview.png)
+![preview](/public/images/preview1.png)
+![preview](/public/images/preview2.png)
 
-## 使用方式
-
-### 方式一：作为 NotionNext 的主题目录使用
-
-- **[步骤 1]** 将本仓库的 `themes/ruka` 目录复制到你的 NotionNext 项目下的 `themes/ruka`
-- **[步骤 2]** 在 NotionNext 的 `blog.config.js` 中启用该主题：
-  - `THEME: 'ruka'`
-- **[步骤 3]** 启动 / 构建项目
-
-### 方式二：直接基于本仓库二次开发
-
-你可以把本仓库当作你的 NotionNext 主题开发工作区，按需修改：
-
-- `themes/ruka/components/*`
-- `themes/ruka/style.js`
-- `themes/ruka/config.js`
 
 ## 配置
 

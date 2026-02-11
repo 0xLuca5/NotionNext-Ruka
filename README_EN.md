@@ -21,23 +21,8 @@ If you find this theme helpful, please consider giving this repo a Star.
 
 ## Preview
 ![preview](/public/images/preview.png)
-
-## Usage
-
-### Option A: Use it as a theme directory in your NotionNext project
-
-- **[Step 1]** Copy this repo's `themes/ruka` into your NotionNext project as `themes/ruka`
-- **[Step 2]** Enable the theme in `blog.config.js`:
-  - `THEME: 'ruka'`
-- **[Step 3]** Run / build your NotionNext project
-
-### Option B: Fork and develop this repo
-
-You can treat this repo as your NotionNext theme workspace and customize:
-
-- `themes/ruka/components/*`
-- `themes/ruka/style.js`
-- `themes/ruka/config.js`
+![preview](/public/images/preview1.png)
+![preview](/public/images/preview2.png)
 
 ## Configuration
 
