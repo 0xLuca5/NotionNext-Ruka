@@ -76,7 +76,7 @@ const BlogItem = ({ post, index = 0 }) => {
               </span>
             )}
             {wordCount > 0 && readTime > 0 && (
-              <span className='post-meta-readtime flex items-center gap-1'>
+              <span className='post-meta-readtime hidden items-center gap-1 md:flex'>
                 <i className='fas fa-clock' />
                 {readTime} 分钟
               </span>
@@ -142,10 +142,10 @@ const BlogItem = ({ post, index = 0 }) => {
             moreButtonOnRight ? '-right-1' : '-left-1'
           }`}>
           <div
-            className={`bg-gradient-shoka-button rounded-2xl transition-all hover:translate-y-1 hover:scale-105 h-10 px-5 inline-flex items-center justify-center whitespace-nowrap text-sm text-white font-medium ${
+            className={`bg-gradient-shoka-button rounded-2xl rounded-se-none rounded-es-none transition-all hover:translate-y-1 hover:scale-105 h-10 px-5 inline-flex items-center justify-center whitespace-nowrap text-sm text-white font-medium ${
               moreButtonOnRight
-                ? 'rounded-se-none rounded-es-none'
-                : 'rounded-ss-none rounded-ee-none'
+                ? 'md:rounded-se-none md:rounded-es-none'
+                : 'md:rounded-se-2xl md:rounded-es-2xl md:rounded-ss-none md:rounded-ee-none'
             }`}>
             more...
           </div>
