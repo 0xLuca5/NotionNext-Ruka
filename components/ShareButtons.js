@@ -184,6 +184,7 @@ const ShareButtons = ({ post }) => {
                 title={titleWithSiteInfo}
                 separator=':: '
                 className='leading-none'>
+
                 <WhatsappIcon size={32} round />
               </WhatsappShareButton>
             )
