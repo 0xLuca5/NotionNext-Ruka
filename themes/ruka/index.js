@@ -60,6 +60,8 @@ import CONFIG from './config'
 
 import { Style } from './style'
 
+import TagIndexPage from './page/TagIndexPage'
+
 
 
 const ShareButtons = dynamic(() => import('@/components/ShareButtons'), {
@@ -1062,49 +1064,7 @@ const LayoutCategoryIndex = props => {
  */
 
 const LayoutTagIndex = props => {
-
-  const { tagOptions } = props
-
-  return (
-
-    <>
-
-      <div id='tags-list' className='duration-200 flex flex-wrap'>
-
-        {tagOptions.map(tag => (
-
-          <div key={tag.name} className='p-2'>
-
-            <SmartLink
-
-              key={tag}
-
-              href={`/tag/${encodeURIComponent(tag.name)}`}
-
-              passHref
-
-              className='cursor-pointer inline-block rounded bg-transparent text-[hsl(var(--primary))] hover:bg-[hsl(var(--primary)/0.12)] duration-200 mr-2 py-1 px-2 text-[10px] md:text-xs whitespace-nowrap hover:shadow-xl dark:hover:bg-[hsl(var(--primary)/0.16)]'>
-
-              <div className='font-light dark:text-gray-400'>
-
-                <i className='mr-1 fas fa-tag' />{' '}
-
-                {tag.name + (tag.count ? `(${tag.count})` : '')}{' '}
-
-              </div>
-
-            </SmartLink>
-
-          </div>
-
-        ))}
-
-      </div>
-
-    </>
-
-  )
-
+  return <TagIndexPage {...props} />
 }
 
 
