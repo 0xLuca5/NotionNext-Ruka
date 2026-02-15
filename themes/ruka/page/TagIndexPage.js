@@ -186,7 +186,7 @@ export default function TagIndexPage(props) {
 
       htmlCanvas.innerHTML = ''
 
-      const baseGridSize = 18
+      const baseGridSize = 26
       const baseWeightFactor = 3
       const gridSize = baseGridSize * dppx
       const weightFactor = baseWeightFactor * dppx
@@ -196,8 +196,8 @@ export default function TagIndexPage(props) {
           list,
           gridSize,
           weightFactor,
-          shape: 'circle',
-          ellipticity: 0.75,
+          shape: 'square',
+          ellipticity: 1,
           minSize: 8,
           shuffle: true,
           drawMask: false,
