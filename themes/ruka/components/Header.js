@@ -275,12 +275,36 @@ export const Header = props => {
     router?.asPath === '/' ||
     (router?.asPath && router.asPath.startsWith('/page/'))
 
+  const tagBasePath = router?.asPath?.split?.('?')?.[0]
+  const isTagPage =
+    router?.pathname === '/tag' ||
+    router?.pathname === '/tag/[tag]' ||
+    router?.pathname === '/tag/[tag]/page/[page]' ||
+    tagBasePath === '/tag' ||
+    (typeof tagBasePath === 'string' && tagBasePath.startsWith('/tag/'))
+
+  const isCategoryPage =
+    router?.pathname === '/category' ||
+    router?.pathname === '/category/[category]' ||
+    router?.pathname === '/category/[category]/page/[page]' ||
+    tagBasePath === '/category' ||
+    (typeof tagBasePath === 'string' && tagBasePath.startsWith('/category/'))
+
+  const isArchivePage =
+    router?.pathname === '/archive' ||
+    router?.pathname === '/archive/[archive]' ||
+    router?.pathname === '/archive/page/[page]' ||
+    tagBasePath === '/archive' ||
+    (typeof tagBasePath === 'string' && tagBasePath.startsWith('/archive'))
+
+  const isCoverPage = isHome || isTagPage || isCategoryPage || isArchivePage
+
   const brandLogo = (siteConfig('RUKA_LOGO_URI', null, CONFIG) || '').trim()
 
   const headerRef = useRef(null)
   const lastScrollYRef = useRef(0)
 
-  const [withBackground, setWithBackground] = useState(!isHome)
+  const [withBackground, setWithBackground] = useState(!isCoverPage)
   const [searchOpen, setSearchOpen] = useState(false)
   const [drawerOpen, setDrawerOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
@@ -373,7 +397,7 @@ export const Header = props => {
       window.requestAnimationFrame(() => {
         const y = window.scrollY || 0
 
-        if (!isHome) {
+        if (!isCoverPage) {
           setWithBackground(true)
         } else {
           setWithBackground(y > 20)
@@ -399,7 +423,7 @@ export const Header = props => {
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
-  }, [isHome])
+  }, [isCoverPage])
 
   useEffect(() => {
     const onKeyDown = e => {
@@ -433,7 +457,7 @@ export const Header = props => {
   }, [router?.events])
 
   const effectiveWithBackground = withBackground || isMobile
-  const isTransparentHome = isHome && !effectiveWithBackground
+  const isTransparentHome = isCoverPage && !effectiveWithBackground
 
   const stopEvent = e => {
     e?.preventDefault?.()

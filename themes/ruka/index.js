@@ -62,6 +62,8 @@ import { Style } from './style'
 
 import TagIndexPage from './page/TagIndexPage'
 
+import HomeCover, { WaveSvg } from './components/HomeCover'
+
 
 
 const ShareButtons = dynamic(() => import('@/components/ShareButtons'), {
@@ -70,55 +72,6 @@ const ShareButtons = dynamic(() => import('@/components/ShareButtons'), {
 
 })
 
-
-
-const WaveSvg = () => {
-
-  return (
-
-    <div className='wave-wrap'>
-
-      <svg
-
-        className='wave'
-
-        xmlns='http://www.w3.org/2000/svg'
-
-        viewBox='0 24 150 28'
-
-        preserveAspectRatio='none'
-
-        aria-hidden='true'>
-
-        <defs>
-
-          <path
-
-            id='gentle-wave'
-
-            d='m -160,44.4 c 30,0 58,-18 87.7,-18 30.3,0 58.3,18 87.3,18 30,0 58,-18 88,-18 30,0 58,18 88,18 l 0,34.5 -351,0 z'
-
-          />
-
-        </defs>
-
-        <g className='parallax'>
-
-          <use xlinkHref='#gentle-wave' x='50' y='0' />
-
-          <use xlinkHref='#gentle-wave' x='50' y='3' />
-
-          <use xlinkHref='#gentle-wave' x='50' y='6' />
-
-        </g>
-
-      </svg>
-
-    </div>
-
-  )
-
-}
 
 
 const PostCover = props => {
@@ -194,140 +147,9 @@ const PostCover = props => {
       </div>
 
       <WaveSvg />
+
     </div>
   )
-}
-
-
-
-const HomeCover = props => {
-
-  const typedRef = useRef(null)
-
-  const title = props?.siteInfo?.title || siteConfig('TITLE')
-
-  const description = props?.siteInfo?.description || siteConfig('DESCRIPTION')
-
-  const bannerImage = props?.siteInfo?.pageCover || siteConfig('HOME_BANNER_IMAGE')
-
-  const greetingWordsValue = siteConfig('GREETING_WORDS', '', CONFIG)
-
-   const bannerImagePosition =
-    typeof props?.siteInfo?.pageCoverPosition === 'number'
-      ? props.siteInfo.pageCoverPosition
-      : 0.5
-
-
-  useEffect(() => {
-
-    if (!isBrowser) return
-
-
-
-    const GREETING_WORDS = String(greetingWordsValue || '')
-      .split(/,|，|\n/)
-      .map(s => s.trim())
-      .filter(Boolean)
-
-
-
-    let canceled = false
-
-
-
-    if (GREETING_WORDS.length > 0 && document.getElementById('typed-ruka')) {
-
-      loadExternalResource('/js/typed.min.js', 'js').then(() => {
-
-        if (canceled) return
-
-        if (window.Typed && !typedRef.current) {
-
-          typedRef.current = new window.Typed('#typed-ruka', {
-
-            strings: GREETING_WORDS,
-
-            typeSpeed: 200,
-
-            backSpeed: 100,
-
-            backDelay: 400,
-
-            showCursor: true,
-
-            smartBackspace: true
-
-          })
-
-        }
-
-      })
-
-    }
-
-
-
-    return () => {
-
-      canceled = true
-
-      if (typedRef.current?.destroy) {
-
-        typedRef.current.destroy()
-
-      }
-
-      typedRef.current = null
-
-    }
-
-  }, [greetingWordsValue])
-
-
-
-  return (
-
-    <div className='relative flex h-[60dvh] max-h-[800px] overflow-hidden'>
-
-      <div className='absolute inset-0 h-full bg-black/40' />
-
-      <div className='absolute inset-0 bottom-[8vh] flex flex-col items-center justify-center px-5 text-white'>
-
-        <h1 className='shadow-text text-center text-4xl/[1.2] md:text-5xl/[1.2] font-bold tracking-widest max-w-7xl'>
-
-          {title}
-
-        </h1>
-
-        {description && <p className='shadow-text mt-4 text-sm'>= {description} =</p>}
-
-        <div className='shadow-text mt-5 text-sm h-6 flex items-center justify-center'>
-
-          <span id='typed-ruka' />
-
-        </div>
-
-      </div>
-
-      <div className='hero-bottom-fade absolute inset-x-0 bottom-0 h-28' />
-
-      <div className='relative -z-10 h-full min-h-60 w-full'>
-
-        <LazyImage
-          src={bannerImage}
-          className='h-full w-full object-cover'
-          style={{ objectPosition: `50% ${(1 - bannerImagePosition) * 100}%` }}
-          alt='cover'
-        />
-
-      </div>
-
-      <WaveSvg />
-
-    </div>
-
-  )
-
 }
 
 
@@ -398,14 +220,69 @@ const LayoutBase = props => {
 
     (router?.asPath && router.asPath.startsWith('/page/'))
 
+  const tagBasePath = router?.asPath?.split?.('?')?.[0]
+  const isTagPage =
+
+    router?.pathname === '/tag' ||
+
+    router?.pathname === '/tag/[tag]' ||
+
+    router?.pathname === '/tag/[tag]/page/[page]' ||
+
+    tagBasePath === '/tag' ||
+
+    (typeof tagBasePath === 'string' && tagBasePath.startsWith('/tag/'))
+
+  const isCategoryPage =
+
+    router?.pathname === '/category' ||
+
+    router?.pathname === '/category/[category]' ||
+
+    router?.pathname === '/category/[category]/page/[page]' ||
+
+    tagBasePath === '/category' ||
+
+    (typeof tagBasePath === 'string' && tagBasePath.startsWith('/category/'))
+
+  const isArchivePage =
+
+    router?.pathname === '/archive' ||
+
+    router?.pathname === '/archive/[archive]' ||
+
+    router?.pathname === '/archive/page/[page]' ||
+
+    tagBasePath === '/archive' ||
+
+    (typeof tagBasePath === 'string' && tagBasePath.startsWith('/archive'))
+
+  const isListCoverPage = isTagPage || isCategoryPage || isArchivePage
+
 
 
   const slotCover =
     props.slotCover ||
     (post ? (
       <PostCover post={post} siteInfo={props?.siteInfo} />
-    ) : isHome ? (
-      <HomeCover siteInfo={props?.siteInfo} />
+    ) : isHome || isListCoverPage ? (
+      <HomeCover
+        siteInfo={props?.siteInfo}
+        title={
+          isCategoryPage
+            ? props?.category
+              ? String(props.category)
+              : undefined
+            : isTagPage
+              ? props?.tag
+                ? String(props.tag)
+                : undefined
+              : isArchivePage
+                ? locale?.NAV?.ARCHIVE || '归档'
+                : undefined
+        }
+        description={isListCoverPage ? '' : undefined}
+      />
     ) : null)
 
   const slotSider = props.slotSider || <SideBar {...props} />
@@ -463,7 +340,7 @@ const LayoutBase = props => {
       {/* 页头 */}
       <Header {...props} />
       {/* 标题栏 */}
-      {!post && <TitleBar {...props} />}
+      {!post && !isHome && !isListCoverPage && <TitleBar {...props} />}
 
       {slotCover}
 
@@ -707,7 +584,7 @@ const LayoutPostList = props => {
 
       {/* 显示标签 */}
 
-      {tag && <div className='pb-12'>#{tag}</div>}
+      {/* {tag && <div className='pb-12'>#{tag}</div>} */}
 
 
 

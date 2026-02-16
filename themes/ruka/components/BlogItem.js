@@ -114,7 +114,7 @@ const BlogItem = ({ post, index = 0 }) => {
         {/* Tag 在底部，为 more 按钮留出空间 */}
         {tags.length > 0 && (
           <div
-            className={`post-tags horizontal-scrollbar [--scrollbar-width:0.25rem] flex gap-2 pt-1 pb-1 overflow-auto mt-auto ${
+            className={`post-tags horizontal-scrollbar [--scrollbar-width:0.25rem] flex gap-2 pt-2 pb-0 overflow-auto mt-auto ${
               // mobile: left align and reserve space for the bottom-right more button
               'justify-start pr-16 md:pr-0'
             }${

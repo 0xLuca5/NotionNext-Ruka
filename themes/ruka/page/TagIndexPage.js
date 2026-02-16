@@ -245,23 +245,6 @@ export default function TagIndexPage(props) {
 
   return (
     <>
-      <div id='tags-list' className='duration-200 flex flex-wrap mb-4'>
-        {tagOptions.map(tag => (
-          <div key={tag.name} className='p-2'>
-            <SmartLink
-              key={tag}
-              href={`/tag/${encodeURIComponent(tag.name)}`}
-              passHref
-              className='cursor-pointer inline-block rounded bg-transparent text-[hsl(var(--primary))] hover:bg-[hsl(var(--primary)/0.12)] duration-200 mr-2 py-1 px-2 text-[10px] md:text-xs whitespace-nowrap hover:shadow-xl dark:hover:bg-[hsl(var(--primary)/0.16)]'>
-              <div className='font-light dark:text-gray-400'>
-                <i className='mr-1 fas fa-tag' />{' '}
-                {tag.name + (tag.count ? `(${tag.count})` : '')}{' '}
-              </div>
-            </SmartLink>
-          </div>
-        ))}
-      </div>
-
       <div ref={cloudWrapRef} className='w-full mb-6 overflow-hidden relative'>
         <canvas ref={cloudCanvasRef} className='hidden' />
         <div
@@ -277,6 +260,23 @@ export default function TagIndexPage(props) {
               'radial-gradient(circle at 50% 45%, rgba(255,255,255,0.08) 0%, rgba(0,0,0,0) 42%, rgba(0,0,0,0) 100%)'
           }}
         />
+      </div>
+
+      <div id='tags-list' className='duration-200 flex flex-wrap mb-4'>
+        {tagOptions.map(tag => (
+          <div key={tag.name} className='p-2'>
+            <SmartLink
+              key={tag}
+              href={`/tag/${encodeURIComponent(tag.name)}`}
+              passHref
+              className='cursor-pointer inline-block rounded bg-transparent text-[hsl(var(--primary))] hover:bg-[hsl(var(--primary)/0.12)] duration-200 mr-2 py-1 px-2 text-[10px] md:text-xs whitespace-nowrap hover:shadow-xl dark:hover:bg-[hsl(var(--primary)/0.16)]'>
+              <div className='font-light dark:text-gray-400'>
+                <i className='mr-1 fas fa-tag' />{' '}
+                {tag.name + (tag.count ? `(${tag.count})` : '')}{' '}
+              </div>
+            </SmartLink>
+          </div>
+        ))}
       </div>
     </>
   )
