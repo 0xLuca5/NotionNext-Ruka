@@ -33,6 +33,7 @@ export const SideBar = props => {
     allPages,
     posts
   } = props
+
   const router = useRouter()
 
   const statusPublish = props?.NOTION_CONFIG?.status_publish || 'Published'
@@ -608,7 +609,7 @@ export const SideBar = props => {
 
   return (
     <>
-      {post ? <PostSider /> : <InfoPanel />}
+      {post?.type === 'Post' ? <PostSider /> : <InfoPanel />}
 
       {/* 最近评论 */}
       {COMMENT_WALINE_SERVER_URL && COMMENT_WALINE_RECENT && (
