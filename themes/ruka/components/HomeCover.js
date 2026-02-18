@@ -34,7 +34,8 @@ export const WaveSvg = () => {
 export default function HomeCover(props) {
   const typedRef = useRef(null)
 
-  const isNonHome = Boolean(props?.title)
+  const hideMeta =
+    typeof props?.hideMeta === 'boolean' ? props.hideMeta : Boolean(props?.title)
 
   const title = props?.title || props?.siteInfo?.title || siteConfig('TITLE')
   const description =
@@ -51,7 +52,7 @@ export default function HomeCover(props) {
 
   useEffect(() => {
     if (!isBrowser) return
-    if (isNonHome) return
+    if (hideMeta) return
 
     const GREETING_WORDS = String(greetingWordsValue || '')
       .split(/,|，|\n/)
@@ -84,7 +85,7 @@ export default function HomeCover(props) {
       }
       typedRef.current = null
     }
-  }, [greetingWordsValue, isNonHome])
+  }, [greetingWordsValue, hideMeta])
 
   return (
     <div className='relative flex h-[60dvh] max-h-[800px] overflow-hidden'>
@@ -93,10 +94,10 @@ export default function HomeCover(props) {
         <h1 className='shadow-text text-center text-4xl/[1.2] md:text-5xl/[1.2] font-bold tracking-widest max-w-7xl'>
           {title}
         </h1>
-        {!isNonHome && description && (
+        {!hideMeta && description && (
           <p className='shadow-text mt-4 text-sm'>= {description} =</p>
         )}
-        {!isNonHome && (
+        {!hideMeta && (
           <div className='shadow-text mt-5 text-sm h-6 flex items-center justify-center'>
             <span id='typed-ruka' />
           </div>

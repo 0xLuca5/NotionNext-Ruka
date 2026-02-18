@@ -220,46 +220,42 @@ const LayoutBase = props => {
 
     (router?.asPath && router.asPath.startsWith('/page/'))
 
-  const tagBasePath = router?.asPath?.split?.('?')?.[0]
+  const basePath = router?.asPath?.split?.('?')?.[0]
+
   const isTagPage =
-
     router?.pathname === '/tag' ||
-
     router?.pathname === '/tag/[tag]' ||
-
     router?.pathname === '/tag/[tag]/page/[page]' ||
-
-    tagBasePath === '/tag' ||
-
-    (typeof tagBasePath === 'string' && tagBasePath.startsWith('/tag/'))
+    basePath === '/tag' ||
+    (typeof basePath === 'string' && basePath.startsWith('/tag/'))
 
   const isCategoryPage =
-
     router?.pathname === '/category' ||
-
     router?.pathname === '/category/[category]' ||
-
     router?.pathname === '/category/[category]/page/[page]' ||
-
-    tagBasePath === '/category' ||
-
-    (typeof tagBasePath === 'string' && tagBasePath.startsWith('/category/'))
+    basePath === '/category' ||
+    (typeof basePath === 'string' && basePath.startsWith('/category/'))
 
   const isArchivePage =
-
     router?.pathname === '/archive' ||
-
     router?.pathname === '/archive/[archive]' ||
-
     router?.pathname === '/archive/page/[page]' ||
-
-    tagBasePath === '/archive' ||
-
-    (typeof tagBasePath === 'string' && tagBasePath.startsWith('/archive'))
+    basePath === '/archive' ||
+    (typeof basePath === 'string' && basePath.startsWith('/archive'))
 
   const isListCoverPage = isTagPage || isCategoryPage || isArchivePage
 
-
+  const coverTitle = isCategoryPage
+    ? props?.category
+      ? String(props.category)
+      : locale?.COMMON?.CATEGORY || '分类'
+    : isTagPage
+      ? props?.tag
+        ? String(props.tag)
+        : locale?.COMMON?.TAGS || '标签'
+      : isArchivePage
+        ? locale?.NAV?.ARCHIVE || '归档'
+        : undefined
 
   const slotCover =
     props.slotCover ||
@@ -268,19 +264,8 @@ const LayoutBase = props => {
     ) : isHome || isListCoverPage ? (
       <HomeCover
         siteInfo={props?.siteInfo}
-        title={
-          isCategoryPage
-            ? props?.category
-              ? String(props.category)
-              : undefined
-            : isTagPage
-              ? props?.tag
-                ? String(props.tag)
-                : undefined
-              : isArchivePage
-                ? locale?.NAV?.ARCHIVE || '归档'
-                : undefined
-        }
+        hideMeta={isListCoverPage}
+        title={coverTitle}
         description={isListCoverPage ? '' : undefined}
       />
     ) : null)
