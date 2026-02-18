@@ -169,7 +169,10 @@ export default function TagIndexPage(props) {
         document.documentElement?.classList?.contains('dark')
 
       const width = Math.max(280, wrap.clientWidth || 0)
-      const height = Math.max(360, Math.round(width * 0.62))
+      const isNarrow = width < 520
+      const height = Math.max(360, Math.round(width * (isNarrow ? 0.82 : 0.62)))
+
+      wrap.style.height = height + 'px'
 
       canvas.style.width = width + 'px'
       canvas.style.height = height + 'px'
@@ -179,6 +182,9 @@ export default function TagIndexPage(props) {
       if (canvas.width !== pixelWidth) canvas.width = pixelWidth
       if (canvas.height !== pixelHeight) canvas.height = pixelHeight
 
+      htmlCanvas.style.position = 'absolute'
+      htmlCanvas.style.left = '0'
+      htmlCanvas.style.top = '0'
       htmlCanvas.style.width = pixelWidth + 'px'
       htmlCanvas.style.height = pixelHeight + 'px'
       htmlCanvas.style.transformOrigin = '0 0'
@@ -186,10 +192,15 @@ export default function TagIndexPage(props) {
 
       htmlCanvas.innerHTML = ''
 
-      const baseGridSize = 26
-      const baseWeightFactor = 3
+      const baseGridSize = isNarrow ? 30 : 26
+      const baseWeightFactor = isNarrow ? 2.6 : 3
       const gridSize = baseGridSize * dppx
       const weightFactor = baseWeightFactor * dppx
+
+      const rotateRatio = isNarrow ? 0.12 : 0.28
+      const rotationSteps = isNarrow ? 1 : 2
+      const minRotation = isNarrow ? 0 : -Math.PI / 4
+      const maxRotation = isNarrow ? 0 : Math.PI / 4
 
       try {
         WordCloud([canvas, htmlCanvas], {
@@ -218,10 +229,10 @@ export default function TagIndexPage(props) {
             return palette[idx]
           },
           backgroundColor: 'rgba(0,0,0,0)',
-          rotateRatio: 0.28,
-          rotationSteps: 2,
-          minRotation: -Math.PI / 4,
-          maxRotation: Math.PI / 4,
+          rotateRatio,
+          rotationSteps,
+          minRotation,
+          maxRotation,
           drawOutOfBound: false
         })
       } catch {
@@ -262,20 +273,22 @@ export default function TagIndexPage(props) {
         />
       </div>
 
-      <div id='tags-list' className='duration-200 flex flex-wrap mb-4'>
+      <div
+        id='tags-list'
+        className='duration-200 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mb-4'
+      >
         {tagOptions.map(tag => (
-          <div key={tag.name} className='p-2'>
-            <SmartLink
-              key={tag}
-              href={`/tag/${encodeURIComponent(tag.name)}`}
-              passHref
-              className='cursor-pointer inline-block rounded bg-transparent text-[hsl(var(--primary))] hover:bg-[hsl(var(--primary)/0.12)] duration-200 mr-2 py-1 px-2 text-[10px] md:text-xs whitespace-nowrap hover:shadow-xl dark:hover:bg-[hsl(var(--primary)/0.16)]'>
-              <div className='font-light dark:text-gray-400'>
-                <i className='mr-1 fas fa-tag' />{' '}
-                {tag.name + (tag.count ? `(${tag.count})` : '')}{' '}
-              </div>
-            </SmartLink>
-          </div>
+          <SmartLink
+            key={tag.name}
+            href={`/tag/${encodeURIComponent(tag.name)}`}
+            passHref
+            className='cursor-pointer w-full inline-flex items-center justify-center rounded bg-transparent text-[hsl(var(--primary))] hover:bg-[hsl(var(--primary)/0.12)] duration-200 py-2 px-2 text-[10px] md:text-xs hover:shadow-xl dark:hover:bg-[hsl(var(--primary)/0.16)]'
+          >
+            <div className='font-light dark:text-gray-400 w-full text-center truncate'>
+              <i className='mr-1 fas fa-tag' />{' '}
+              {tag.name + (tag.count ? `(${tag.count})` : '')}{' '}
+            </div>
+          </SmartLink>
         ))}
       </div>
     </>
