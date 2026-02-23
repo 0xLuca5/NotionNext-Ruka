@@ -12,8 +12,8 @@ If you find this theme helpful, please consider giving this repo a Star.
 
 - [x] **Home page**
 - [x] **Post page**
-- [ ] **Categories**
-- [ ] **Tags page**
+- [x] **Categories**
+- [x] **Tags page**
 - [x] **Post word count**
 - [x] **Theme color palette**
 - [x] **Random posts**
@@ -23,6 +23,7 @@ If you find this theme helpful, please consider giving this repo a Star.
 <p align="center">
   <img src="/public/images/preview.png" width="100%" />
   <img src="/public/images/preview1.png" style="width:49%;display:inline-block;" /><img src="/public/images/preview2.png" style="width:49%;display:inline-block;" />
+  <img src="/public/images/preview3.png" width="100%" />
 </p>
 
 ## Configuration

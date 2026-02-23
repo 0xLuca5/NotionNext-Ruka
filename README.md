@@ -12,8 +12,8 @@
 
 - [x] **主页**
 - [x] **文章页面**
-- [ ] **分类**
-- [ ] **标签页面**
+- [x] **分类**
+- [x] **标签页面**
 - [x] **文章字数计算**
 - [x] **主题色板**
 - [x] **随机文章**
@@ -23,6 +23,7 @@
 <p align="center">
   <img src="/public/images/preview.png" width="100%" />
   <img src="/public/images/preview1.png" style="width:49%;display:inline-block;" /><img src="/public/images/preview2.png" style="width:49%;display:inline-block;" />
+  <img src="/public/images/preview3.png" width="100%" />
 </p>
 
 
